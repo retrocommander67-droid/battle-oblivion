@@ -45,7 +45,7 @@ const champion=winner(state,31);if(champion)host.append(el('p',text('Turniersieg
 function buildMatch(id){
 const match=el('article',undefined,'battle-match');match.dataset.match=String(id);match.classList.toggle('battle-final',id===31);match.append(el('div','Match '+id+' · '+format(id),'battle-match-id'));const pair=participants(state,id),win=winner(state,id);
 pair.forEach((team,side)=>{const line=el('div',undefined,'battle-team'+(team&&win===team?' battle-winner':''));line.append(el('span',team||text('Sieger aus Vorrunde','Winner of previous round')));line.append(el('strong',state.scores[id]?String(state.scores[id][side]):'–'));match.append(line)});
-if(id<=16){const mapButton=el('button',state.maps[id],'battle-map');mapButton.type='button';mapButton.addEventListener('click',()=>{const map=maps.find(m=>m.name===state.maps[id]);if(!map)return;document.querySelector('#zoom-title').textContent=map.name;const image=document.querySelector('#zoom-img');image.src=map.image;image.alt=map.name;document.querySelector('#zoom-note').textContent=translate(map.note);document.querySelector('#zoom').showModal();resetMapZoom()});match.append(mapButton)}
+if(id<=16){const mapButton=el('button',state.maps[id],'battle-map');mapButton.type='button';mapButton.addEventListener('click',()=>{const map=maps.find(m=>m.name===state.maps[id]);if(!map)return;openMapPreview(map)});match.append(mapButton)}
 if((!online&&draft)||(online&&cloud.canEdit&&revision!==null&&!cloudError)){const edit=button('Ergebnis eintragen','Enter result',()=>editMatch(id));edit.classList.add('battle-edit-result');match.append(edit);match.classList.add('battle-editable');}return match;
 }
 function drawLines(bracket){
