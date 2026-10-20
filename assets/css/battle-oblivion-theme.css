@@ -56,3 +56,6 @@ footer{margin-top:24px}footer p{font-size:11px;max-width:none;color:#8b8581}dial
 
 /* Uniform map-card rows with no internal library/version commentary. */
 #groups .card{display:flex;flex-direction:column}#groups .card>.preview{flex-shrink:0}#groups .card>.body{display:flex;flex-direction:column;flex:1;min-width:0}#groups .body>h3{line-height:1.4;min-height:2.8em;margin:8px 0 4px;overflow-wrap:anywhere}#groups .map-position-slot{height:52px;min-height:52px;display:flex;align-items:center}#groups .map-position-slot .map-positions{margin:0;font-size:12px;line-height:1.45}#groups .map-details{margin-top:8px}#groups .map-details[open]{display:flex;flex-direction:column;flex:1}#groups .map-details>.map-metadata{margin-bottom:14px}#groups .map-details>.workshop{display:block;margin-top:auto;padding-top:12px;font-size:13px;line-height:1.4}
+
+/* Zoom tools span above both columns; map and facts share the same edges. */
+#zoom>.zoom-controls{flex:none;margin:0 0 6px}#zoom>.zoom-hint{flex:none;margin:4px 0 10px}#zoom .map-view-layout{align-items:stretch}#zoom .map-info-panel{height:100%;box-sizing:border-box}#groups .map-metadata dd{overflow-wrap:anywhere;max-width:160px}.map-info-panel .map-metadata dd{overflow-wrap:anywhere;max-width:180px}
