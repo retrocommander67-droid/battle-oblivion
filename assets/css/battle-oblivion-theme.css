@@ -59,3 +59,14 @@ footer{margin-top:24px}footer p{font-size:11px;max-width:none;color:#8b8581}dial
 
 /* Zoom tools span above both columns; map and facts share the same edges. */
 #zoom>.zoom-controls{flex:none;margin:0 0 6px}#zoom>.zoom-hint{flex:none;margin:4px 0 10px}#zoom .map-view-layout{align-items:stretch}#zoom .map-info-panel{height:100%;box-sizing:border-box}#groups .map-metadata dd{overflow-wrap:anywhere;max-width:160px}.map-info-panel .map-metadata dd{overflow-wrap:anywhere;max-width:180px}
+
+/* Match-Status: gespielt / bereit / offen */
+.battle-match .battle-status{float:right;font-size:9px;letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:8px;border:1px solid currentColor}
+.battle-match.battle-done{border-color:#4f9a5c;border-left:4px solid #4f9a5c;background:linear-gradient(145deg,#16281b,#0f1a13)!important}
+.battle-match.battle-done .battle-status{color:#7fd48f;background:#7fd48f1f}
+.battle-match.battle-done .battle-team:not(.battle-winner){opacity:.5;text-decoration:line-through;text-decoration-color:#ffffff30}
+.battle-match.battle-done .battle-winner{color:#9be8a8;background:#4f9a5c2e}
+.battle-match.battle-ready{border-color:#e0a030;border-left:4px solid #e0a030;box-shadow:0 0 10px #e0a03038}
+.battle-match.battle-ready .battle-status{color:#f4bf70;background:#e0a03022}
+.battle-match.battle-pending{opacity:.45;border-style:dashed;border-color:#4c3a32}
+.battle-match.battle-pending .battle-status{color:#8a8a8a}

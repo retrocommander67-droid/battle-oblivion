@@ -63,7 +63,7 @@ const tournamentWinner=champion(state);if(tournamentWinner)host.append(el('p',te
 }
 
 function buildMatch(id){
-const match=el('article',undefined,'battle-match');match.dataset.match=String(id);match.classList.toggle('battle-final',id===31);match.append(el('div','Match '+id+' · '+format(id),'battle-match-id'));const pair=participants(state,id),win=winner(state,id);
+const match=el('article',undefined,'battle-match');match.dataset.match=String(id);match.classList.toggle('battle-final',id===31);match.append(el('div','Match '+id+' · '+format(id),'battle-match-id'));const pair=participants(state,id),win=winner(state,id);const known=pair.every(x=>x&&x!=='TBD'),status=win?'done':known?'ready':'pending';match.classList.add('battle-'+status);match.dataset.status=status;match.firstChild.append(el('span',win?text('✔ Gespielt','✔ Played'):known?text('Bereit','Ready'):text('Offen','Pending'),'battle-status'));
 pair.forEach((team,side)=>{const line=el('div',undefined,'battle-team'+(team&&win===team?' battle-winner':''));line.append(el('span',team||text('Sieger aus Vorrunde','Winner of previous round')));line.append(el('strong',state.scores[id]?String(state.scores[id][side]):'–'));match.append(line)});
 if(id<=16){const mapButton=el('button',text('Erste Karte: ','First Map: ')+mapDisplayName(state.maps[id]),'battle-map');mapButton.type='button';mapButton.addEventListener('click',()=>{const map=maps.find(m=>m.name===state.maps[id]);if(!map)return;openMapPreview(map)});match.append(mapButton)}
 if((!online&&draft)||(online&&cloud.canEdit&&revision!==null&&!cloudError)){const edit=button('Ergebnis eintragen','Enter result',()=>editMatch(id));edit.classList.add('battle-edit-result');match.append(edit);match.classList.add('battle-editable');}return match;
